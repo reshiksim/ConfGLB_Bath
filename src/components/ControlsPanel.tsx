@@ -43,20 +43,6 @@ export function ControlsPanel({
 
   return (
     <aside className="controls-panel" aria-label="Bath configuration controls">
-      <fieldset className="control-group">
-        <legend>Scene</legend>
-        <select
-          className="scene-select"
-          value={scenePresetId}
-          onChange={(event) => onScenePresetChange(event.target.value as ViewerScenePresetId)}
-        >
-          {Object.values(VIEWER_SCENE_PRESETS).map((scene) => (
-            <option key={scene.id} value={scene.id}>
-              {scene.label}
-            </option>
-          ))}
-        </select>
-      </fieldset>
       <ColorSelector
         value={configuration.outerColor}
         onChange={handleColorChange}
@@ -79,6 +65,20 @@ export function ControlsPanel({
         value={configuration.hardwareFinish}
         onChange={(hardwareFinish: HardwareFinish) => updateConfiguration({ hardwareFinish })}
       />
+      <fieldset className="control-group">
+        <legend>Scene</legend>
+        <select
+          className="scene-select"
+          value={scenePresetId}
+          onChange={(event) => onScenePresetChange(event.target.value as ViewerScenePresetId)}
+        >
+          {Object.values(VIEWER_SCENE_PRESETS).map((scene) => (
+            <option key={scene.id} value={scene.id}>
+              {scene.label}
+            </option>
+          ))}
+        </select>
+      </fieldset>
     </aside>
   );
 }
